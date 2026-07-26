@@ -23,8 +23,11 @@ class GuciravelServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Guciravel ONLY runs in local environment to guarantee zero overhead in production.
-        if ($this->app->environment('local') || $this->app->environment('testing')) {
+        // Guciravel ONLY runs in local environment AND when debug is true, NOT in console
+        // This guarantees zero overhead and prevents info leaks in production.
+        if (($this->app->environment('local') || $this->app->environment('testing')) 
+            && config('app.debug') === true 
+            && !$this->app->runningInConsole()) {
             
             // 1. Start listening to database queries
             $this->app->make(HealerEngine::class)->listen();

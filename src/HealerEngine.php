@@ -38,6 +38,12 @@ class HealerEngine
      */
     protected function analyzeQuery(QueryExecuted $query): void
     {
+        // Memory protection: prevent RAM exhaustion in long-running processes
+        if (count($this->queries) >= 1000) {
+            $this->queries = [];
+            $this->nPlusOneQueries = [];
+        }
+
         // Ignore transaction commands and framework metadata queries
         if (in_array(strtolower($query->sql), ['begin', 'commit', 'rollback']) || str_contains($query->sql, 'sqlite_master')) {
             return;

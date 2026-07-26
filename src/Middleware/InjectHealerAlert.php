@@ -51,6 +51,12 @@ class InjectHealerAlert
             return false;
         }
 
+        // Don't inject if response is compressed/encoded (e.g., gzip, deflate, br)
+        // because strripos will corrupt the binary data
+        if ($response->headers->has('Content-Encoding')) {
+            return false;
+        }
+
         return true;
     }
 
