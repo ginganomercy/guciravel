@@ -82,5 +82,11 @@ Guciravel is designed **exclusively** to inject pure HTML pages.
 
 ---
 
+## 👨‍💻 Author
+**Rafly A.R**
+Instagram: [@galaxy_scream](https://instagram.com/galaxy_scream)
+
+---
+
 ## 📜 License
 This library is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
