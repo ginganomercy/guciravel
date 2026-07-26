@@ -1,0 +1,30 @@
+{
+    "name": "ginganomercy/guciravel",
+    "description": "N+1 Query Healer for Laravel. Visual detection for development environments.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafly A.R",
+            "email": "rafly@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/database": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ginganomercy\\Guciravel\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ginganomercy\\Guciravel\\GuciravelServiceProvider"
+            ]
+        }
+    }
+}
