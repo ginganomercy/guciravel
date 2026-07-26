@@ -1,11 +1,12 @@
 {
     "name": "ginganomercy/guciravel",
     "description": "N+1 Query Healer for Laravel. Visual detection for development environments.",
+    "keywords": ["laravel", "n+1", "query", "performance", "debug", "healer", "orm", "eloquent"],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Rafly Ashraffi Rachmat",
+            "name": "Rafly A.R",
             "email": "raflypriyantoro@gmail.com"
         }
     ],
