@@ -84,7 +84,8 @@ Guciravel is designed **exclusively** to inject pure HTML pages.
 
 ## 👨‍💻 Author
 **Rafly A.R**
-Instagram: [@galaxy_scream](https://instagram.com/galaxy_scream)
+📧 Email: raflypriyantoro@gmail.com
+📸 Instagram: [@galaxy_scream](https://instagram.com/galaxy_scream)
 
 ---
 
