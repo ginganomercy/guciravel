@@ -82,6 +82,35 @@ Guciravel is designed **exclusively** to inject pure HTML pages.
 
 ---
 
+## 🏛️ Enterprise Architecture & Zero-PDO Overhead
+
+Guciravel uses an **Event-Driven Interceptor** architecture (`Illuminate\Support\Facades\Event::listen(QueryExecuted::class)`). 
+- **No Unnecessary Database Connections:** Unlike traditional libraries that bind directly to `DB::listen` (which can force an eager PDO database connection initialization during package booting), Guciravel listens to the Laravel Event Dispatcher.
+- **Safe CLI & Standalone Fallback:** The execution stack tracer uses `function_exists('base_path')` with fallback to `getcwd()`, ensuring 100% safety when running standalone unit tests or external CLI scripts.
+
+---
+
+## 🧪 Testing & Verification
+
+Guciravel comes with a complete automated test suite powered by **PHPUnit 10** and **Orchestra Testbench 9**.
+
+To run the verification suite locally:
+```bash
+# 1. Install development dependencies
+composer install
+
+# 2. Run the test suite
+composer test
+# or
+vendor/bin/phpunit
+```
+
+The test suite covers:
+- **Unit Tests:** Threshold limits (queries ≤ 3 ignored), duplicate SQL hash detection, and 1,000-query RAM memory protection.
+- **Integration Tests:** Middleware HTML injection before `</body>`, JSON API non-interference, and Gzip binary stream protection.
+
+---
+
 ## 👨‍💻 Author
 **Rafly A.R**
 📧 Email: raflypriyantoro@gmail.com
