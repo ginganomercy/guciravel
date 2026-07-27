@@ -1,7 +1,7 @@
 {
     "name": "ginganomercy/guciravel",
     "description": "N+1 Query Healer for Laravel. Visual detection for development environments.",
-    "keywords": ["laravel", "n+1", "query", "performance", "debug", "healer", "orm", "eloquent"],
+    "keywords": ["laravel", "n-plus-one", "n1", "eager-loading", "query", "performance", "debug", "healer", "orm", "eloquent"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -20,6 +20,18 @@
         "psr-4": {
             "Ginganomercy\\Guciravel\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ginganomercy\\Guciravel\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {
