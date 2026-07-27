@@ -1,5 +1,5 @@
 {
-    "name": "ginganomercy/guciravel",
+    "name": "jati/guciravel",
     "description": "N+1 Query Healer for Laravel. Visual detection for development environments.",
     "keywords": ["laravel", "n-plus-one", "n1", "eager-loading", "query", "performance", "debug", "healer", "orm", "eloquent"],
     "type": "library",

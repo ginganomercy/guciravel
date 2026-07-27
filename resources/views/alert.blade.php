@@ -88,7 +88,7 @@
 
 <div id="guciravel-alert">
     <div class="guciravel-header">
-        <span>♨️ Guciravel: N+1 Detected!</span>
+        <span>♨️ Guciravel v{{ \Ginganomercy\Guciravel\HealerEngine::VERSION }}: N+1 Detected!</span>
         <button class="guciravel-close" onclick="document.getElementById('guciravel-alert').remove()">×</button>
     </div>
     <div class="guciravel-body">

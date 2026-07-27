@@ -23,11 +23,14 @@ class GuciravelServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Guciravel ONLY runs in local environment AND when debug is true, NOT in console
+        // Always register views so they can be rendered in tests or templates
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'guciravel');
+
+        // Guciravel ONLY runs in local/testing environment AND when debug is true, NOT in general console commands
         // This guarantees zero overhead and prevents info leaks in production.
         if (($this->app->environment('local') || $this->app->environment('testing')) 
             && config('app.debug') === true 
-            && !$this->app->runningInConsole()) {
+            && (!$this->app->runningInConsole() || $this->app->runningUnitTests())) {
             
             // 1. Start listening to database queries
             $this->app->make(HealerEngine::class)->listen();
@@ -35,9 +38,6 @@ class GuciravelServiceProvider extends ServiceProvider
             // 2. Register Middleware to inject the visual alert globally
             $kernel = $this->app->make(Kernel::class);
             $kernel->pushMiddleware(InjectHealerAlert::class);
-
-            // 3. Load Views for the alert component
-            $this->loadViewsFrom(__DIR__.'/../resources/views', 'guciravel');
         }
     }
 }

@@ -51,7 +51,7 @@ Guciravel is engineered for wide enterprise compatibility across both legacy and
 Since this is purely a development tool, it is **highly recommended** to install it as a `--dev` dependency with semantic versioning:
 
 ```bash
-composer require ginganomercy/guciravel:"^1.0" --dev
+composer require jati/guciravel:"^1.0" --dev
 ```
 
 *This package utilizes Laravel Auto-Discovery. You do not need to register the Service Provider manually.*

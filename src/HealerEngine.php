@@ -2,33 +2,52 @@
 
 namespace Ginganomercy\Guciravel;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Events\QueryExecuted;
 
 class HealerEngine
 {
     /**
+     * Package version.
+     */
+    public const VERSION = '1.0.0';
+
+    /**
+     * Get the package version.
+     */
+    public static function version(): string
+    {
+        return self::VERSION;
+    }
+
+    /**
      * Threshold for considering a query as N+1
+     *
+     * @var int
      */
     protected int $threshold = 3;
 
     /**
      * History of queries in the current request.
-     * Format: ['query_hash' => ['sql' => string, 'count' => int, 'source' => string]]
+     *
+     * @var array
      */
     protected array $queries = [];
 
     /**
      * List of detected N+1 queries.
+     *
+     * @var array
      */
     protected array $nPlusOneQueries = [];
 
     /**
-     * Start listening to database queries.
+     * Start listening to database queries via Laravel Event Dispatcher.
+     * This avoids initializing PDO database connections unnecessarily.
      */
     public function listen(): void
     {
-        DB::listen(function (QueryExecuted $query) {
+        Event::listen(QueryExecuted::class, function (QueryExecuted $query) {
             $this->analyzeQuery($query);
         });
     }
@@ -108,7 +127,8 @@ class HealerEngine
                 !str_contains($file, 'HealerEngine.php')) {
                 
                 // Make path relative to base path for cleaner display
-                $relativePath = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $file);
+                $basePath = function_exists('base_path') ? base_path() : getcwd();
+                $relativePath = str_replace($basePath . DIRECTORY_SEPARATOR, '', $file);
                 
                 // Normalize slashes for display
                 $relativePath = str_replace('\\', '/', $relativePath);
