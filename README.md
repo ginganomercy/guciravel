@@ -2,6 +2,12 @@
     <h1>♨️ Guciravel</h1>
     <p><strong>The Visual N+1 Query Healer for Laravel</strong></p>
     <p><i>Detect, Trace, and Heal Laravel Performance Issues Visually.</i></p>
+    <p>
+        <img src="https://img.shields.io/badge/version-1.0.0-ef4444" alt="Version 1.0.0">
+        <img src="https://img.shields.io/badge/PHP-8.0%2B-777BB4?logo=php" alt="PHP 8.0+">
+        <img src="https://img.shields.io/badge/Laravel-9.x--12.x-FF2D20?logo=laravel" alt="Laravel 9.x - 12.x">
+        <img src="https://img.shields.io/badge/Composer-2.x-885630?logo=composer" alt="Composer 2.x">
+    </p>
 </div>
 
 ---
@@ -19,12 +25,33 @@ Guciravel is engineered with absolute **Production Safety** in mind:
 
 ---
 
+## 🖥️ Server Requirements & Compatibility (Versioning)
+
+Guciravel is engineered for wide enterprise compatibility across both legacy and modern Laravel LTS/stable releases. Its dependencies are decoupled from heavy application layers and bind strictly to `illuminate/support`, `illuminate/database`, and `illuminate/contracts`.
+
+### 1. Supported PHP & Laravel Versions
+| Component | Supported Version Ranges | Minimum Requirement | Notes |
+|---|---|---|---|
+| **PHP Runtime** | `8.0`, `8.1`, `8.2`, `8.3`, `8.4` | `^8.0` | Strict types enabled; PHP 7.x intentionally unsupported |
+| **Laravel Framework** | `9.x`, `10.x`, `11.x`, `12.x` | `^9.0` | Full support for Laravel 11/12 streamlined bootstrap |
+| **Composer** | `2.x` | `^2.0` | Utilizes PSR-4 autoloading & Laravel package auto-discovery |
+
+### 2. Composer Dependency Matrix
+| Composer Package Requirement | Version Constraint | Purpose |
+|---|---|---|
+| `php` | `^8.0` | Core PHP engine and typed property compatibility |
+| `illuminate/support` | `^9.0\|^10.0\|^11.0\|^12.0` | Event Dispatcher & Collection utilities |
+| `illuminate/database` | `^9.0\|^10.0\|^11.0\|^12.0` | `QueryExecuted` event interception & Eloquent model tracing |
+| `illuminate/contracts` | `^9.0\|^10.0\|^11.0\|^12.0` | Laravel IoC container and Http Kernel contracts |
+
+---
+
 ## 📦 Installation
 
-Since this is purely a development tool, it is **highly recommended** to install it as a `--dev` dependency.
+Since this is purely a development tool, it is **highly recommended** to install it as a `--dev` dependency with semantic versioning:
 
 ```bash
-composer require ginganomercy/guciravel --dev
+composer require ginganomercy/guciravel:"^1.0" --dev
 ```
 
 *This package utilizes Laravel Auto-Discovery. You do not need to register the Service Provider manually.*
